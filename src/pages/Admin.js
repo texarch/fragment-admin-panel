@@ -657,9 +657,9 @@ const Admin = () => {
                                             />
                                             <div className="image-controls">
                                                 <label htmlFor="blog-image-input" className="file-input-label">
-                                                    {formData.image && formData.image !== BlogImage ? 'Change Image' : 'Choose Image'}
+                                                    {formData.image && formData.image.trim() !== '' && formData.image !== BlogImage && !formData.image.includes('UExBQ0VIT0xERVJfSU1BR0') ? 'Change Image' : 'Choose Image'}
                                                 </label>
-                                                {formData.image && formData.image !== BlogImage && (
+                                                {formData.image && formData.image.trim() !== '' && formData.image !== BlogImage && !formData.image.includes('UExBQ0VIT0xERVJfSU1BR0') && (
                                                     <button
                                                         type="button"
                                                         className="remove-image-btn"
@@ -669,7 +669,7 @@ const Admin = () => {
                                                     </button>
                                                 )}
                                             </div>
-                                            {formData.image && (
+                                            {formData.image && formData.image.trim() !== '' && formData.image !== BlogImage && !formData.image.includes('UExBQ0VIT0xERVJfSU1BR0') && (
                                                 <div className="image-preview">
                                                     <img src={formData.image} alt="Preview" />
                                                 </div>
@@ -729,7 +729,9 @@ const Admin = () => {
                                         <td className="id-cell">{(blog._id || 'N/A').substring(0, 8)}...</td>
                                         <td className="title-cell">
                                             <div className="title-wrapper">
-                                                <img src={blog.image} alt="" className="blog-thumbnail" />
+                                                {blog.image && blog.image.trim() !== '' && blog.image !== BlogImage && !blog.image.includes('UExBQ0VIT0xERVJfSU1BR0') && (
+                                                    <img src={blog.image} alt="" className="blog-thumbnail" />
+                                                )}
                                                 <span>{blog.title}</span>
                                             </div>
                                         </td>
