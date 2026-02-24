@@ -522,7 +522,12 @@ const Admin = () => {
             const payload = { ...faqFormData, status: 'answered' };
             await addFAQ(payload);
         } else if (isEditingFAQ && selectedFAQ) {
-            await updateFAQ(selectedFAQ._id, faqFormData);
+            // Include status: 'answered' when saving an answer
+            const payload = {
+                ...faqFormData,
+                status: faqFormData.answer && faqFormData.answer.trim() !== '' ? 'answered' : 'pending'
+            };
+            await updateFAQ(selectedFAQ._id, payload);
         }
         const updated = await getFAQs();
         setFaqs(updated.reverse());
