@@ -60,6 +60,7 @@ const Admin = () => {
     // Blog management state
     const [blogs, setBlogs] = useState([]);
     const [selectedCategory, setSelectedCategory] = useState('Organiser'); // Default to Organiser
+    const [viewingBlog, setViewingBlog] = useState(null); // For mini blog preview modal
 
     // FAQ State
     const [view, setView] = useState('blogs'); // 'blogs' or 'faqs'
@@ -448,9 +449,12 @@ const Admin = () => {
         }
     };
 
-    // View blog
+    // View blog - opens mini preview modal
     const handleViewBlog = (id) => {
-        navigate(`/blog/post/${id}`);
+        const blog = blogs.find(b => b._id === id);
+        if (blog) {
+            setViewingBlog(blog);
+        }
     };
 
     // FAQ Handlers
@@ -1082,6 +1086,26 @@ const Admin = () => {
                             </div>
                         </div>
                     )}
+                </div>
+            )}
+            {/* Mini Blog Preview Modal */}
+            {viewingBlog && (
+                <div className="blog-preview-overlay" onClick={() => setViewingBlog(null)}>
+                    <div className="blog-preview-modal" onClick={(e) => e.stopPropagation()}>
+                        <button className="blog-preview-close" onClick={() => setViewingBlog(null)}>×</button>
+                        <div className="blog-preview-content">
+                            {viewingBlog.image && viewingBlog.image.trim() !== '' && !viewingBlog.image.includes('UExBQ0VIT0xERVJfSU1BR0') && (
+                                <img src={viewingBlog.image} alt={viewingBlog.title} className="blog-preview-image" />
+                            )}
+                            <div className="blog-preview-meta">
+                                <span className="blog-preview-category">{viewingBlog.category}</span>
+                                <span className="blog-preview-date">{viewingBlog.date}</span>
+                            </div>
+                            <h2 className="blog-preview-title">{viewingBlog.title}</h2>
+                            {viewingBlog.summary && <p className="blog-preview-summary">{viewingBlog.summary}</p>}
+                            <div className="blog-preview-body" dangerouslySetInnerHTML={{ __html: viewingBlog.content }} />
+                        </div>
+                    </div>
                 </div>
             )}
         </div>

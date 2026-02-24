@@ -1006,3 +1006,167 @@
 .password-toggle-btn:focus {
     outline: none;
 }
+
+/* ========================================
+   Blog Preview Modal
+   ======================================== */
+
+.blog-preview-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    animation: fadeIn 0.2s ease;
+}
+
+.blog-preview-modal {
+    background: #fff;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 700px;
+    max-height: 85vh;
+    overflow-y: auto;
+    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.3);
+    animation: slideUp 0.3s ease;
+    position: relative;
+}
+
+.blog-preview-close {
+    position: sticky;
+    top: 15px;
+    float: right;
+    margin-right: 15px;
+    width: 40px;
+    height: 40px;
+    border: none;
+    background: rgba(0, 0, 0, 0.06);
+    border-radius: 50%;
+    font-size: 28px;
+    color: #666;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.blog-preview-close:hover {
+    background: rgba(0, 0, 0, 0.12);
+    transform: rotate(90deg);
+    color: #333;
+}
+
+.blog-preview-content {
+    padding: 30px 40px 40px;
+}
+
+.blog-preview-image {
+    width: 100%;
+    max-height: 350px;
+    object-fit: cover;
+    border-radius: 14px;
+    margin-bottom: 24px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.blog-preview-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.blog-preview-category {
+    background: linear-gradient(135deg, #E3F9FF, #d0f0ff);
+    color: #2C3440;
+    padding: 5px 14px;
+    border-radius: 20px;
+    font-family: "SF Pro Display", sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.blog-preview-date {
+    font-family: "SF Pro Display", sans-serif;
+    font-size: 13px;
+    color: #888;
+}
+
+.blog-preview-title {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 32px;
+    font-weight: 400;
+    color: #2C3440;
+    margin: 0 0 16px 0;
+    line-height: 1.2;
+}
+
+.blog-preview-summary {
+    font-family: "SF Pro Display", sans-serif;
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    font-style: italic;
+}
+
+.blog-preview-body {
+    font-family: "SF Pro Display", sans-serif;
+    font-size: 15px;
+    color: #333;
+    line-height: 1.7;
+}
+
+.blog-preview-body h1,
+.blog-preview-body h2,
+.blog-preview-body h3 {
+    font-family: 'Times New Roman', Times, serif;
+    color: #2C3440;
+    margin-top: 24px;
+    margin-bottom: 12px;
+}
+
+.blog-preview-body p {
+    margin-bottom: 12px;
+}
+
+.blog-preview-body img {
+    max-width: 100%;
+    border-radius: 10px;
+    margin: 16px 0;
+}
+
+.blog-preview-body ul,
+.blog-preview-body ol {
+    padding-left: 24px;
+    margin-bottom: 12px;
+}
+
+@media (max-width: 768px) {
+    .blog-preview-modal {
+        width: 95%;
+        max-height: 90vh;
+    }
+
+    .blog-preview-content {
+        padding: 20px;
+    }
+
+    .blog-preview-title {
+        font-size: 24px;
+    }
+
+    .blog-preview-image {
+        max-height: 250px;
+    }
+}
