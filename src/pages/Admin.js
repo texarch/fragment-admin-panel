@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { getBlogs } from './blogStorage';
 import { getFAQs, deleteQuestion, addFAQ, updateFAQ } from './faqStorage';
 import BlogImage from '../assets/Blog_Page_Image.png';
@@ -16,7 +15,6 @@ const getCurrentFormattedDate = () => {
 };
 
 const Admin = () => {
-    const navigate = useNavigate();
 
     // Authentication state
     const [isAuthenticated, setIsAuthenticated] = useState(false);
